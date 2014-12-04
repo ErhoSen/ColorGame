@@ -14,6 +14,10 @@ var box;
 var k=9; // Coefficient of change
 var interval;
 var score = 0;
+var pictures = ['pics/be_better.png',
+    'pics/win.jpg'];
+
+switchTo5x=true;
 
 /* A function to return random number from min to max */
 function getRandomInt(min, max) {
@@ -69,25 +73,33 @@ function board(){
     box.addClass("lv"+lvl);
 }
 
+function choose_pic(score){
+    if (score < 15)
+        return pictures[0];
+    else
+        return pictures[1];
+}
+
 function end_game(){
     box.empty(); // remove all tiles
     result = $('<div/>', {id:"result"});
-    $('<img>', {src:'http://cs622816.vk.me/v622816884/bc74/ygTo2NR1cDQ.jpg', align: "center"}).appendTo(result);
+    $('<img>', {src:choose_pic(score), align: "center"}).appendTo(result);
     $('<h1/>', {text:"Your Score: " + score, align:"center"}).appendTo(result);
+    $('#share').show();
     result.appendTo(box);
-    box.append('<button id="start-button"> START GAME </button>');
+    box.append('<a href="#" class="btn" id="start-button"> restart </button>');
     // reIndent
     k = 9;
     score = 0;
     lvMap = [2, 3, 4, 5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9];
-    $('#timer').text("00:30").hide();
+    //$('#timer').text("00:30").hide();
 }
 
 $(document).ready(function(){
     $("#box").on('click', "#start-button", function(){
         $(this).hide();
         var timer = $('#timer');
-        timer.show();
+        timer.text("00:30");
 
         interval = setInterval(function() {
             timer_val = timer.html().split(':');
