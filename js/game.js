@@ -1,12 +1,6 @@
-//$("#start-button").onclick(start_game())
-//
-//function start_game(){
-//    $("#HAY").innerHTML = "Hello, world!";
-//    alert("Hello, world!");
-//}
-
-// .css('background-color', 'rgb(255,220,200)')
-
+/*
+    Simple breake-your-eyes game.
+ */
 
 var lvl;
 var lvMap = [2, 3, 4, 5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9];
@@ -122,15 +116,7 @@ $(document).ready(function(){
         timer.text("00:"+seconds);
 
         interval = setInterval(function() {
-            //timer_val = timer.html().split(':');
-            //var minutes = parseInt(timer_val[0], 10);
             seconds -= 1;
-            //if (minutes < 0) return clearInterval(interval);
-            //if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
-            //if (seconds < 0 && minutes != 0) {
-            //    minutes -= 1;
-            //    seconds = 59;
-            //}
             if (seconds < 10 && length.time != 2) seconds = '0' + seconds;
             timer.html("00" + ':' + seconds);
 
