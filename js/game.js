@@ -65,7 +65,7 @@ function board(){
             box.append(tile.clone());
         }
     }
-    box.addClass("lv"+lvl);
+    box.addClass("lvl lv"+lvl);
 }
 
 function choose_pic(score){
@@ -77,6 +77,7 @@ function choose_pic(score){
 
 function end_game(){
     box.empty(); // remove all tiles
+    box.removeClass();
     result = $('<div/>', {id:"result"});
     $('<img>', {src:choose_pic(score), align: "center"}).appendTo(result);
     $('<h1/>', {text:"Your Score: " + score, align:"center"}).appendTo(result);
@@ -127,7 +128,7 @@ $(document).ready(function(){
         }, 1000);
 
         box = $("#box");
-        box.show();
+        box.addClass("game_start");
         lvl = lvMap.shift();
         board();
     });
